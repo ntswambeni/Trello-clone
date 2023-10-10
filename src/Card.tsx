@@ -1,6 +1,6 @@
 import { CardContainer } from "./styles";
 
-type CardProps = {
+export type CardProps = {
   id: string;
   text: string;
 };

@@ -2,21 +2,22 @@ import { AppContainer } from "./styles";
 import { Column } from "./Column";
 import { AddNewItem } from "./AddNewItem";
 import { useAppState } from "./state/AppStateContext";
+import { addList } from "./state/actions";
 
 export const App = () => {
-  const { lists } = useAppState();
+  const { lists, dispatch } = useAppState();
 
   return (
     <AppContainer>
-      {lists.map((task) => (
+      {lists.map((list) => (
         <Column
-          key={task.id}
-          id={task.id}
-          text="Generate app scaffold"
+          key={list.id}
+          id={list.id}
+          text={list.text}
         />
       ))}
       <AddNewItem
-        onAdd={console.log}
+        onAdd={(text) => dispatch(addList(text))}
         toggleButtonText="+ Add another list"
       />
     </AppContainer>
